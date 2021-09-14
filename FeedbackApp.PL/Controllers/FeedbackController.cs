@@ -27,7 +27,7 @@ namespace FeedbackApp.PL.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("feedback")]
+        [Route("feedback/")]
         public ActionResult GetAllFeedbacks()
         {
             var feedbacks = _feedbackService.FindFeedbacksByFunc(null);
@@ -35,7 +35,7 @@ namespace FeedbackApp.PL.Controllers
         }
 
         [HttpGet]
-        [Route("feedback_id/{id}")]
+        [Route("GetFeedbackById/{id}")]
         [Authorize]
         public ActionResult GetFeedbackById(Guid id)
         {
@@ -54,7 +54,7 @@ namespace FeedbackApp.PL.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        [Route("feedback")]
+        [Route("feedback/create")]
         public ActionResult CreateFeedback([FromForm]CreateFeedback f)
         {
             try

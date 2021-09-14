@@ -62,6 +62,9 @@ namespace FeedbackApp.PL
             {
                 endpoints.MapControllerRoute(
                     name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "feedback",
                     pattern: "{controller=Feedback}/{action=GetAllFeedbacks}/{id?}");
             });
         }

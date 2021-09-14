@@ -26,7 +26,7 @@ namespace FeedbackApp.PL.Controllers
         }
 
         [HttpGet]
-        [Route("/{id}")]
+        [Route("comment/{id}")]
         public ActionResult GetCommentListByFeedbackId(Guid id)
         {
             var comments = _commentService.FindCommentsByFunc(c => c.FeedbackId == id);
@@ -34,7 +34,7 @@ namespace FeedbackApp.PL.Controllers
         }
 
         [HttpGet]
-        [Route("/create/{id}")]
+        [Route("comment/create/{id}")]
         public ActionResult CreateComment(Guid id)
         {
             return View(new CreateComment() { FeedbackId=id });

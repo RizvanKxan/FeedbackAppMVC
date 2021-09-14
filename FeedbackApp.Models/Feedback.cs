@@ -7,7 +7,7 @@ namespace FeedbackApp.Models
     public class Feedback : BaseEntity
     {
         public Guid UserId { get; set; }
-        public virtual User User { get; set; }
+        public virtual User User { get; set; } = new User();
 
         public DateTime CreationDate { get; set; }
         public string Text { get; set; }
