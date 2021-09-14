@@ -1,0 +1,63 @@
+﻿@model FeedbackApp.BLL.VMs.Feedback.InfoFeedback
+
+@{
+    ViewData["Title"] = "GetFeedbackById";
+}
+
+<h1>Feedback Info</h1>
+
+<div>
+    <h4>Feedback Info</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AuthorName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Feedback" asp-action="GetAllFeedbacks">Back to List</a>
+</div>
+
+<div>
+
+    @{
+        await Html.RenderPartialAsync("CreateComment", new FeedbackApp.BLL.VMs.Comment.CreateComment() { FeedbackId = Model.Id });
+
+    }
+</div>
+
+<div>
+    @{
+        await Html.RenderPartialAsync("GetCommentListByFeedbackId", Model.Comments.OrderBy(m => m.CreationDate).Take(4));
+    }
+</div>
+
+@*<div> для комментариев  </div>*@
